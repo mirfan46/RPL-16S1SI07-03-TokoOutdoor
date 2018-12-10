@@ -20,7 +20,7 @@
         <div class="container-fluid">
 
           <!-- Breadcrumbs-->
-          <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
+          <?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
 
           <!-- Icon Cards-->
           <div class="row">
