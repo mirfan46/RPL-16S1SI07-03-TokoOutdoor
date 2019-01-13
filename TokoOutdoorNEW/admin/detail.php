@@ -33,10 +33,10 @@ $detail = $ambil->fetch_assoc();
         <tr>
             <td><?php echo $nomer; ?></td>
             <td><?php echo $pecah['nama_barang']; ?></td>
-            <td><?php echo $pecah['harga']; ?></td>
+            <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
             <td><?php echo $pecah['kuantitas']; ?></td>
             <td>
-                <?php echo $pecah['harga']*$pecah['kuantitas']; ?>
+                Rp. <?php echo number_format($pecah['harga']*$pecah['kuantitas']); ?>
             </td>
         </tr>
         <?php $nomer++; ?>

@@ -22,12 +22,14 @@
             <td>
                 <img src="../img/<?php echo $pecah['gambar']; ?>" width="100">
             </td>
-            <td><?php echo $pecah['harga']; ?></td>
+            <td>Rp. <?php echo number_format($pecah['harga']); ?></td>
             <td><?php echo $pecah['stok']; ?></td>
             <td><?php echo $pecah['deskripsi']; ?></td>
             <td>
-                <a href="index.php?halaman=hapusbarang&id=<?php echo $pecah['id_barang']; ?>" class="btn btn-danger">hapus</a>
-                <a href="index.php?halaman=ubahbarang&id=<?php echo $pecah['id_barang']; ?>" class="btn btn-warning">ubah</a>
+                <a href="index.php?halaman=hapusbarang&id=<?php echo $pecah['id_barang']; ?>" 
+                class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">hapus</a>
+                <a href="index.php?halaman=ubahbarang&id=<?php echo $pecah['id_barang']; ?>" 
+                class="btn btn-warning">ubah</a>
             </td>
         </tr>
         <?php $nomer++; ?>
