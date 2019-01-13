@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `barang` (
-  `KD_Barang` char(5) NOT NULL,
-  `Nama_Barang` varchar(20) NOT NULL,
-  `Status` varchar(10) NOT NULL,
-  `Tanggal_Beli` date DEFAULT NULL,
+  `kd_barang` varchar(64) NOT NULL,
+  `nama_barang` varchar(20) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `tanggal_beli` date DEFAULT NULL,
   `harga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,10 +43,10 @@ CREATE TABLE `barang` (
 --
 
 CREATE TABLE `detail_jual` (
-  `ID_Detail_Penjualan` char(5) NOT NULL,
-  `Harga_Jual` int(11) DEFAULT NULL,
-  `KD_Barang` char(5) NOT NULL,
-  `KD_Penjualan` char(5) NOT NULL
+  `id_detail_penjualan` varchar(64) NOT NULL,
+  `harga_jual` int(11) DEFAULT NULL,
+  `kd_barang` varchar(64) NOT NULL,
+  `kd_penjualan` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,10 +56,10 @@ CREATE TABLE `detail_jual` (
 --
 
 CREATE TABLE `detail_pengembalian` (
-  `ID_Detail_Pengembalian` char(5) NOT NULL,
-  `Denda` int(11) DEFAULT NULL,
-  `KD_Barang` char(5) NOT NULL,
-  `KD_Pengembalian` char(5) NOT NULL
+  `id_detail_pengembalian` varchar(64) NOT NULL,
+  `denda` int(11) DEFAULT NULL,
+  `kd_barang` varchar(64) NOT NULL,
+  `kd_pengembalian` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,10 +69,10 @@ CREATE TABLE `detail_pengembalian` (
 --
 
 CREATE TABLE `detail_penyewaan` (
-  `ID_Detail_Penyewaan` char(5) NOT NULL,
-  `Harga_Sewa` int(11) DEFAULT NULL,
-  `KD_Barang` char(5) NOT NULL,
-  `KD_Penyewaan` char(5) NOT NULL
+  `id_detail_penyewaan` varchar(64) NOT NULL,
+  `harga_sewa` int(11) DEFAULT NULL,
+  `kd_barang` varchar(64) NOT NULL,
+  `kd_penyewaan` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,11 +82,11 @@ CREATE TABLE `detail_penyewaan` (
 --
 
 CREATE TABLE `konsumen` (
-  `ID_Konsumen` char(5) NOT NULL,
+  `id_konsumen` varchar(64) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(15) NOT NULL,
-  `No_Telephone` varchar(12) DEFAULT NULL,
-  `Alamat` varchar(50) DEFAULT NULL
+  `no_telephone` varchar(12) DEFAULT NULL,
+  `alamat` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,9 +96,9 @@ CREATE TABLE `konsumen` (
 --
 
 CREATE TABLE `pengembalian` (
-  `KD_Pengembalian` char(5) NOT NULL,
-  `Tanggal_Kembali` date DEFAULT NULL,
-  `ID_Konsumen` char(5) NOT NULL
+  `kd_pengembalian` varchar(64) NOT NULL,
+  `tanggal_kembali` date DEFAULT NULL,
+  `id_konsumen` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -108,10 +108,10 @@ CREATE TABLE `pengembalian` (
 --
 
 CREATE TABLE `penjualan` (
-  `KD_Penjualan` char(5) NOT NULL,
-  `Total` int(11) DEFAULT NULL,
-  `Tanggal_Penjualan` date NOT NULL,
-  `ID_Konsumen` char(5) NOT NULL
+  `kd_penjualan` varchar(64) NOT NULL,
+  `total` int(11) DEFAULT NULL,
+  `tanggal_penjualan` date NOT NULL,
+  `id_konsumen` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,11 +121,11 @@ CREATE TABLE `penjualan` (
 --
 
 CREATE TABLE `penyewaan` (
-  `KD_Penyewaan` char(5) NOT NULL,
-  `Diskon` int(11) DEFAULT NULL,
-  `Tanggal_Penyewaan` date NOT NULL,
-  `Tanggal_Pengembalian` date NOT NULL,
-  `ID_Konsumen` char(5) NOT NULL
+  `kd_penyewaan` varchar(64) NOT NULL,
+  `diskon` int(11) DEFAULT NULL,
+  `tanggal_penyewaan` date NOT NULL,
+  `tanggal_pengembalian` date NOT NULL,
+  `id_konsumen` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -136,58 +136,58 @@ CREATE TABLE `penyewaan` (
 -- Indexes for table `barang`
 --
 ALTER TABLE `barang`
-  ADD PRIMARY KEY (`KD_Barang`);
+  ADD PRIMARY KEY (`kd_barang`);
 
 --
 -- Indexes for table `detail_jual`
 --
 ALTER TABLE `detail_jual`
-  ADD PRIMARY KEY (`ID_Detail_Penjualan`),
-  ADD KEY `ForgnkeyKDBARANG` (`KD_Barang`),
-  ADD KEY `ForgnkeyKDPENJUALAN` (`KD_Penjualan`);
+  ADD PRIMARY KEY (`id_detail_penjualan`),
+  ADD KEY `ForgnkeyKDBARANG` (`kd_barang`),
+  ADD KEY `ForgnkeyKDPENJUALAN` (`kd_penjualan`);
 
 --
 -- Indexes for table `detail_pengembalian`
 --
 ALTER TABLE `detail_pengembalian`
-  ADD PRIMARY KEY (`ID_Detail_Pengembalian`),
-  ADD KEY `ForgnkeyKDPENGEMBALIAN` (`KD_Pengembalian`),
-  ADD KEY `Forgnkey` (`KD_Barang`);
+  ADD PRIMARY KEY (`id_detail_pengembalian`),
+  ADD KEY `ForgnkeyKDPENGEMBALIAN` (`kd_pengembalian`),
+  ADD KEY `Forgnkey` (`kd_barang`);
 
 --
 -- Indexes for table `detail_penyewaan`
 --
 ALTER TABLE `detail_penyewaan`
-  ADD PRIMARY KEY (`ID_Detail_Penyewaan`),
-  ADD KEY `ForgnkeyKD_Barang` (`KD_Barang`),
-  ADD KEY `ForegnkeyKDPENYEWAAN` (`KD_Penyewaan`);
+  ADD PRIMARY KEY (`id_detail_penyewaan`),
+  ADD KEY `ForgnkeyKD_Barang` (`kd_barang`),
+  ADD KEY `ForegnkeyKDPENYEWAAN` (`kd_penyewaan`);
 
 --
 -- Indexes for table `konsumen`
 --
 ALTER TABLE `konsumen`
-  ADD PRIMARY KEY (`ID_Konsumen`);
+  ADD PRIMARY KEY (`id_konsumen`);
 
 --
 -- Indexes for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
-  ADD PRIMARY KEY (`KD_Pengembalian`),
-  ADD KEY `ForgnkeyIDKONSUMEN` (`ID_Konsumen`);
+  ADD PRIMARY KEY (`kd_pengembalian`),
+  ADD KEY `ForgnkeyIDKONSUMEN` (`id_konsumen`);
 
 --
 -- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD PRIMARY KEY (`KD_Penjualan`),
-  ADD KEY `Forgnkey` (`ID_Konsumen`) USING BTREE;
+  ADD PRIMARY KEY (`kd_penjualan`),
+  ADD KEY `Forgnkey` (`id_konsumen`) USING BTREE;
 
 --
 -- Indexes for table `penyewaan`
 --
 ALTER TABLE `penyewaan`
-  ADD PRIMARY KEY (`KD_Penyewaan`),
-  ADD KEY `ForegnkeyIDKONSUMEN` (`ID_Konsumen`);
+  ADD PRIMARY KEY (`kd_penyewaan`),
+  ADD KEY `ForegnkeyIDKONSUMEN` (`id_konsumen`);
 
 --
 -- Constraints for dumped tables
@@ -197,40 +197,40 @@ ALTER TABLE `penyewaan`
 -- Constraints for table `detail_jual`
 --
 ALTER TABLE `detail_jual`
-  ADD CONSTRAINT `ForgnkeyKDBARANG` FOREIGN KEY (`KD_Barang`) REFERENCES `barang` (`KD_Barang`),
-  ADD CONSTRAINT `ForgnkeyKDPENJUALAN` FOREIGN KEY (`KD_Penjualan`) REFERENCES `penjualan` (`KD_Penjualan`);
+  ADD CONSTRAINT `ForgnkeyKDBARANG` FOREIGN KEY (`kd_barang`) REFERENCES `barang` (`kd_barang`),
+  ADD CONSTRAINT `ForgnkeyKDPENJUALAN` FOREIGN KEY (`kd_penjualan`) REFERENCES `penjualan` (`kd_penjualan`);
 
 --
 -- Constraints for table `detail_pengembalian`
 --
 ALTER TABLE `detail_pengembalian`
-  ADD CONSTRAINT `Forgnkey` FOREIGN KEY (`KD_Barang`) REFERENCES `barang` (`KD_Barang`),
-  ADD CONSTRAINT `ForgnkeyKDPENGEMBALIAN` FOREIGN KEY (`KD_Pengembalian`) REFERENCES `pengembalian` (`KD_Pengembalian`);
+  ADD CONSTRAINT `Forgnkey` FOREIGN KEY (`kd_barang`) REFERENCES `barang` (`kd_barang`),
+  ADD CONSTRAINT `ForgnkeyKDPENGEMBALIAN` FOREIGN KEY (`kd_pengembalian`) REFERENCES `pengembalian` (`kd_pengembalian`);
 
 --
 -- Constraints for table `detail_penyewaan`
 --
 ALTER TABLE `detail_penyewaan`
-  ADD CONSTRAINT `ForegnkeyKDPENYEWAAN` FOREIGN KEY (`KD_Penyewaan`) REFERENCES `penyewaan` (`KD_Penyewaan`),
-  ADD CONSTRAINT `ForgnkeyKD_Barang` FOREIGN KEY (`KD_Barang`) REFERENCES `barang` (`KD_Barang`);
+  ADD CONSTRAINT `ForegnkeyKDPENYEWAAN` FOREIGN KEY (`kd_penyewaan`) REFERENCES `penyewaan` (`kd_penyewaan`),
+  ADD CONSTRAINT `ForgnkeyKD_Barang` FOREIGN KEY (`kd_barang`) REFERENCES `barang` (`kd_barang`);
 
 --
 -- Constraints for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
-  ADD CONSTRAINT `ForgnkeyIDKONSUMEN` FOREIGN KEY (`ID_Konsumen`) REFERENCES `konsumen` (`ID_Konsumen`);
+  ADD CONSTRAINT `ForgnkeyIDKONSUMEN` FOREIGN KEY (`id_konsumen`) REFERENCES `konsumen` (`id_konsumen`);
 
 --
 -- Constraints for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD CONSTRAINT `ID_Konsumen` FOREIGN KEY (`ID_Konsumen`) REFERENCES `konsumen` (`ID_Konsumen`);
+  ADD CONSTRAINT `id_konsumen` FOREIGN KEY (`id_konsumen`) REFERENCES `konsumen` (`id_konsumen`);
 
 --
 -- Constraints for table `penyewaan`
 --
 ALTER TABLE `penyewaan`
-  ADD CONSTRAINT `ForegnkeyIDKONSUMEN` FOREIGN KEY (`ID_Konsumen`) REFERENCES `konsumen` (`ID_Konsumen`);
+  ADD CONSTRAINT `ForegnkeyIDKONSUMEN` FOREIGN KEY (`id_konsumen`) REFERENCES `konsumen` (`id_konsumen`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
