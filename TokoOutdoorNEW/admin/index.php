@@ -189,6 +189,13 @@ if (!isset($_SESSION['admin']))
             {
               include 'logout.php';
             }
+            if  ($_GET['halaman']=="hapuskostumer")
+            {
+              include 'hapuskostumer.php';
+            }
+            if ($_GET['halaman']=="hapustujuan") {
+              include 'hapustujuan.php';
+            }
           }
           else
           {
