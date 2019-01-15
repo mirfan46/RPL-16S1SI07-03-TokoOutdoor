@@ -26,7 +26,8 @@
             <td><?php echo $pecah['no_telp']; ?></td>
             <td><?php echo $pecah['metode_pem']; ?></td>
             <td>
-                <a href="" class="btn btn-danger">Hapus</a>
+                <a href="index.php?halaman=hapustujuan&id=<?php echo $pecah['id_tujuan'] ?>" 
+                class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>
             </td>
         </tr>
         <?php $nomer++; ?>

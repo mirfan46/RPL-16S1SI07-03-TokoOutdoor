@@ -20,7 +20,8 @@
             <td><?php echo $pecah['email']; ?></td>
             <td><?php echo $pecah['level']; ?></td>
             <td>
-                <a href="" class="btn btn-danger">hapus</a>
+                <a href="index.php?halaman=hapuskostumer&id=<?php echo $pecah['id_konsumen'] ?>" 
+                class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">hapus</a>
             </td>
         </tr>
         <?php $nomer++; ?>
